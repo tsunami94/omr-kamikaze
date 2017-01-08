@@ -1438,3 +1438,35 @@ Processing by Devise::SessionsController#new as HTML
   Rendered devise/sessions/new.html.erb within layouts/application (121.0ms)
   Rendered layouts/_header.html.erb (1.0ms)
 Completed 200 OK in 1259ms (Views: 1254.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-08 22:40:37 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (113.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 1877ms (Views: 1832.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-01-08 22:40:50 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (129.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1495ms (Views: 1481.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-01-08 22:43:10 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (103.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 2014ms (Views: 1973.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-01-08 22:45:31 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (549.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 2650ms (Views: 2619.6ms | ActiveRecord: 0.0ms)
