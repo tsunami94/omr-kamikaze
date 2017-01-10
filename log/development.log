@@ -3289,3 +3289,225 @@ Processing by PinsController#index as HTML
   [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
   Rendered layouts/_header.html.erb (8.0ms)
 Completed 200 OK in 1722ms (Views: 1711.8ms | ActiveRecord: 4.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (1.0ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?  [[nil, 5]]
+SQLite3::SQLException: no such column: pins.user_id: SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPins (20170109061801)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (31.0ms)[0m  [1mALTER TABLE "pins" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_pins_on_user_id" ON "pins" ("user_id")[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170109061801"]]
+  [1m[36m (133.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pins_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pins_on_user_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (12.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?[0m  [["user_id", 5]]
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:27:33 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (1.0ms)[0m  SELECT "pins".* FROM "pins"
+  Rendered pins/index.html.erb within layouts/application (32.0ms)
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered layouts/_header.html.erb (31.0ms)
+Completed 200 OK in 2469ms (Views: 2266.9ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/pins/new" for ::1 at 2017-01-09 13:27:41 +0700
+Processing by PinsController#new as HTML
+  Rendered pins/_form.html.erb (6.0ms)
+  Rendered pins/new.html.erb within layouts/application (120.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (6.0ms)
+Completed 200 OK in 1713ms (Views: 1711.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pins" for ::1 at 2017-01-09 13:28:08 +0700
+Processing by PinsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pM6hRNkTIfJeMw3tAl3tD2jCgZ6FPX9Zdq6k+sBg880BKa4h8dl5gssI2CpgdsmhTRteeuwvKYKoZWqlWsXq4g==", "pin"=>{"description"=>"pin number four"}, "commit"=>"Create Pin"}
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  INSERT INTO "pins" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "pin number four"], ["created_at", "2017-01-09 06:28:08.403580"], ["updated_at", "2017-01-09 06:28:08.403580"]]
+  [1m[36m (569.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/pins/3
+Completed 302 Found in 625ms (ActiveRecord: 577.0ms)
+
+
+Started GET "/pins/3" for ::1 at 2017-01-09 13:28:09 +0700
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPin Load (1.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pins/show.html.erb within layouts/application (12.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered layouts/_header.html.erb (7634.0ms)
+Completed 200 OK in 17214ms (Views: 17204.8ms | ActiveRecord: 1.5ms)
+  [1m[35mPin Load (1.0ms)[0m  SELECT  "pins".* FROM "pins"  ORDER BY "pins"."id" DESC LIMIT 1
+
+
+Started GET "/pins/3/edit" for ::1 at 2017-01-09 13:34:49 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPin Load (1.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pins/_form.html.erb (11.0ms)
+  Rendered pins/edit.html.erb within layouts/application (133.5ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered layouts/_header.html.erb (49.0ms)
+Completed 200 OK in 1476ms (Views: 1444.3ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:34:52 +0700
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (1.0ms)[0m  SELECT "pins".* FROM "pins"
+  Rendered pins/index.html.erb within layouts/application (11.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered layouts/_header.html.erb (8.5ms)
+Completed 200 OK in 1803ms (Views: 1800.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/pins/new" for ::1 at 2017-01-09 13:34:56 +0700
+Processing by PinsController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered pins/_form.html.erb (3.0ms)
+  Rendered pins/new.html.erb within layouts/application (113.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1413ms (Views: 1238.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/pins" for ::1 at 2017-01-09 13:35:41 +0700
+Processing by PinsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8i/ja/qlxXqOT/3BZix4uWEypUtnGY7r/7KslJaoqXlXyOwO0m+dCht0KAYEB1wXROt6rw4L2DAheWLLDA2wVg==", "pin"=>{"description"=>"This pin should have a user"}, "commit"=>"Create Pin"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "pins" ("description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "This pin should have a user"], ["user_id", 5], ["created_at", "2017-01-09 06:35:41.970866"], ["updated_at", "2017-01-09 06:35:41.970866"]]
+  [1m[35m (170.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/pins/4
+Completed 302 Found in 201ms (ActiveRecord: 176.0ms)
+
+
+Started GET "/pins/4" for ::1 at 2017-01-09 13:35:42 +0700
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered pins/show.html.erb within layouts/application (3.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (10.0ms)
+Completed 200 OK in 1234ms (Views: 1227.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:35:49 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  Rendered pins/index.html.erb within layouts/application (6.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (8.0ms)
+Completed 200 OK in 1041ms (Views: 1031.3ms | ActiveRecord: 1.0ms)
+  [1m[36mPin Load (0.5ms)[0m  [1mSELECT  "pins".* FROM "pins"  ORDER BY "pins"."id" DESC LIMIT 1[0m
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:39:02 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (0.5ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  Rendered pins/index.html.erb within layouts/application (10.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (6.5ms)
+Completed 200 OK in 991ms (Views: 988.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:42:01 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (0.5ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  Rendered pins/index.html.erb within layouts/application (5861.7ms)
+Completed 500 Internal Server Error in 16775ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined method `email' for nil:NilClass):
+    15:     <% @pins.each do |pin| %>
+    16:       <tr>
+    17:         <td><%= pin.description %></td>
+    18:         <td><%= pin.user.email %></td>
+    19:         <td><%= link_to 'Show', pin %></td>
+    20:         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+    21:         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/pins/index.html.erb:18:in `block in _app_views_pins_index_html_erb___63884151_65724660'
+  app/views/pins/index.html.erb:15:in `_app_views_pins_index_html_erb___63884151_65724660'
+
+
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (13.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5097.1ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (4249.2ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (9802.1ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:43:25 +0700
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (1.0ms)[0m  SELECT "pins".* FROM "pins"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (47.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (7.0ms)
+Completed 200 OK in 1086ms (Views: 1081.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:45:02 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (117.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered layouts/_header.html.erb (84.0ms)
+Completed 200 OK in 2026ms (Views: 2016.0ms | ActiveRecord: 3.0ms)
+  [1m[35mPin Load (2.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1  [["user_id", 5], ["id", 1]]
+  [1m[36mPin Load (0.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 5]]
+
+
+Started GET "/pins" for ::1 at 2017-01-09 13:58:35 +0700
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (3.0ms)[0m  SELECT "pins".* FROM "pins"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (145.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1259ms (Views: 1224.9ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-10 11:40:26 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (0.0ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (28.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 1252ms (Views: 1245.3ms | ActiveRecord: 0.0ms)
