@@ -3511,3 +3511,166 @@ Processing by PinsController#index as HTML
   Rendered pins/index.html.erb within layouts/application (28.0ms)
   Rendered layouts/_header.html.erb (0.0ms)
 Completed 200 OK in 1252ms (Views: 1245.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-10 16:48:41 +0700
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (4.5ms)[0m  SELECT "pins".* FROM "pins"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (54.0ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 2486ms (Views: 2466.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-10 17:04:10 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (2.5ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (132.5ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 2238ms (Views: 2203.7ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/pins/4/edit" for ::1 at 2017-01-10 17:04:16 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPin Load (1.5ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mPin Load (0.5ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1  [["user_id", 5], ["id", 4]]
+  Rendered pins/_form.html.erb (11.5ms)
+  Rendered pins/edit.html.erb within layouts/application (399.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1893ms (Views: 1819.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/pins/3/edit" for ::1 at 2017-01-10 17:04:25 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPin Load (3.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 3]]
+Redirected to http://localhost:3000/pins?notice=Not+authorized+to+edit+this+pin
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/pins?notice=Not+authorized+to+edit+this+pin" for ::1 at 2017-01-10 17:04:25 +0700
+Processing by PinsController#index as HTML
+  Parameters: {"notice"=>"Not authorized to edit this pin"}
+  [1m[35mPin Load (0.0ms)[0m  SELECT "pins".* FROM "pins"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (22.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1070ms (Views: 1066.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/pins/4/edit" for ::1 at 2017-01-10 17:04:48 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPin Load (0.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 4]]
+  Rendered pins/_form.html.erb (3.0ms)
+  Rendered pins/edit.html.erb within layouts/application (114.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1353ms (Views: 1324.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/pins/1/edit" for ::1 at 2017-01-10 17:04:54 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPin Load (0.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mPin Load (1.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1  [["user_id", 5], ["id", 1]]
+Redirected to http://localhost:3000/pins?notice=Not+authorized+to+edit+this+pin
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 38ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/pins?notice=Not+authorized+to+edit+this+pin" for ::1 at 2017-01-10 17:04:54 +0700
+Processing by PinsController#index as HTML
+  Parameters: {"notice"=>"Not authorized to edit this pin"}
+  [1m[36mPin Load (3.0ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 959ms (Views: 951.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/pins/4/edit" for ::1 at 2017-01-10 17:05:20 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPin Load (1.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mPin Load (0.0ms)[0m  SELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1  [["user_id", 5], ["id", 4]]
+  Rendered pins/_form.html.erb (4.0ms)
+  Rendered pins/edit.html.erb within layouts/application (116.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 1535ms (Views: 1399.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/pins/1/edit" for ::1 at 2017-01-10 17:05:27 +0700
+Processing by PinsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPin Load (0.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mPin Load (0.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."user_id" = ? AND "pins"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 1]]
+Redirected to http://localhost:3000/pins
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 22ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/pins" for ::1 at 2017-01-10 17:05:27 +0700
+Processing by PinsController#index as HTML
+  [1m[35mPin Load (0.0ms)[0m  SELECT "pins".* FROM "pins"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered pins/index.html.erb within layouts/application (31.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 1118ms (Views: 1115.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/pins/3" for ::1 at 2017-01-10 17:08:31 +0700
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPin Load (1.0ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pins/show.html.erb within layouts/application (0.5ms)
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_header.html.erb (7.0ms)
+Completed 200 OK in 1718ms (Views: 1710.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/pins/3" for ::1 at 2017-01-10 17:10:31 +0700
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPin Load (0.5ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pins/show.html.erb within layouts/application (7721.0ms)
+Completed 500 Internal Server Error in 11833ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `pin' for #<#<Class:0x83c3388>:0x8171328>):
+    4:   <strong>Description:</strong>
+    5:   <%= @pin.description %>
+    6: </p>
+    7: <% if pin.user == current_user %>
+    8: <%= link_to 'Edit', edit_pin_path(@pin) %> |
+    9: <% end %>
+   10: <%= link_to 'Back', pins_path %>
+  app/views/pins/show.html.erb:7:in `_app_views_pins_show_html_erb__125867931_67305264'
+
+
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.5ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (30.5ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9383.7ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (5077.3ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (12827.9ms)
